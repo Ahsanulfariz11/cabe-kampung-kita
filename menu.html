@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Menu Lengkap - Resto Cabe Kampung Kita</title>
+    <meta name="description" content="Daftar menu lengkap Resto Cabe Kampung Kita Tarakan. Sajian Nusantara lezat dengan harga terjangkau.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fff1f1',
+                            100: '#ffdfdf',
+                            500: '#ef4444',
+                            600: '#dc2626',
+                            700: '#b91c1c',
+                            900: '#7f1d1d',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #dc2626; border-radius: 4px; }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .category-tab.active {
+            background-color: #dc2626;
+            color: white;
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+        }
+
+        .menu-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .menu-card:hover {
+            transform: translateY(-4px);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="font-sans text-gray-800 antialiased bg-gray-50/50">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md border-b border-gray-100" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 md:h-20">
+                <a href="index.html" class="flex items-center gap-2 group">
+                    <img src="assets/img/logo.jpg" alt="Logo" class="h-9 w-9 md:h-11 md:w-11 rounded-full shadow-md object-cover border-2 border-white">
+                    <div class="flex flex-col">
+                        <span class="font-bold text-base md:text-lg text-gray-900 leading-tight uppercase tracking-tight">Cabe Kampung Kita</span>
+                        <span class="text-[7px] md:text-[8px] text-brand-600 font-bold tracking-[0.3em] uppercase -mt-0.5">Nusantara Taste</span>
+                    </div>
+                </a>
+                <a href="index.html" class="bg-gray-100 hover:bg-brand-600 hover:text-white text-gray-800 px-4 py-2 md:px-6 md:py-2.5 rounded-full font-bold transition-all text-sm flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    Beranda
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Header -->
+    <header class="relative pt-28 md:pt-40 pb-12 md:pb-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Banner" class="w-full h-full object-cover opacity-10">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/50 to-gray-50/50"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-fade-in">
+            <span class="inline-block py-1 px-4 rounded-full bg-brand-50 text-brand-600 text-[10px] font-bold tracking-widest uppercase mb-4 border border-brand-100">
+                Menu Lengkap
+            </span>
+            <h1 class="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight">Cita Rasa <span class="text-brand-600">Nusantara</span></h1>
+            <p class="text-gray-600 max-w-2xl mx-auto text-base md:text-lg px-4">Setiap hidangan dimasak dengan bumbu pilihan dan resep rahasia keluarga untuk kenikmatan yang tak terlupakan.</p>
+        </div>
+    </header>
+
+    <!-- Category Tabs -->
+    <div class="sticky top-16 md:top-20 z-40 bg-white/80 backdrop-blur-md py-3 border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 flex items-center justify-center gap-2 overflow-x-auto hide-scrollbar">
+            <button onclick="scrollToCategory('tradisional')" class="category-tab active px-4 md:px-6 py-2 rounded-full font-bold text-xs md:text-sm transition-all border border-transparent flex-shrink-0">
+                Tradisional
+            </button>
+            <button onclick="scrollToCategory('nasi')" class="category-tab px-4 md:px-6 py-2 rounded-full font-bold text-xs md:text-sm text-gray-600 hover:bg-gray-100 transition-all border border-gray-200 bg-white flex-shrink-0">
+                Nasi & Pelengkap
+            </button>
+            <button onclick="scrollToCategory('minuman')" class="category-tab px-4 md:px-6 py-2 rounded-full font-bold text-xs md:text-sm text-gray-600 hover:bg-gray-100 transition-all border border-gray-200 bg-white flex-shrink-0">
+                Minuman
+            </button>
+        </div>
+    </div>
+
+    <main class="py-12 md:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 md:space-y-24">
+        
+        <!-- SECTION: TRADISIONAL -->
+        <section id="tradisional" class="scroll-mt-32 md:scroll-mt-40 animate-fade-in">
+            <div class="mb-8 md:mb-10 text-center md:text-left">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Tradisional & Sayuran</h2>
+                <div class="w-16 h-1 bg-brand-600 mt-2 rounded-full mx-auto md:mx-0"></div>
+                <p class="text-gray-500 mt-2 text-sm md:text-base">Masakan rumahan dengan sayuran segar berkualitas.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <!-- Gado-Gado -->
+                <div class="menu-card group bg-white rounded-3xl p-4 shadow-lg shadow-gray-200/50 border border-gray-100 flex flex-col">
+                    <div class="relative h-40 md:h-48 rounded-2xl overflow-hidden mb-5">
+                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gado-gado" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 bg-brand-600 text-white text-[9px] font-bold px-2.5 py-1 rounded-full uppercase tracking-tighter">SIGNATURE</div>
+                    </div>
+                    <div class="px-1 flex-grow">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg md:text-xl font-bold text-gray-900">Gado-Gado Lontong</h3>
+                            <span class="text-base md:text-lg font-bold text-brand-600">32k</span>
+                        </div>
+                        <p class="text-gray-500 text-xs md:text-sm leading-relaxed mb-4">Perpaduan sayur segar dan saus kacang gurih, disajikan dengan lontong atau nasi.</p>
+                    </div>
+                    <div class="px-1 pb-1">
+                        <a href="https://wa.me/6282190339958" target="_blank" class="w-full flex items-center justify-center gap-2 bg-gray-50 hover:bg-brand-600 hover:text-white py-2.5 rounded-xl text-gray-600 font-bold transition-all text-xs">
+                            Pesan Sekarang
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Sate Ayam -->
+                <div class="menu-card group bg-white rounded-3xl p-4 shadow-lg shadow-gray-200/50 border border-gray-100 flex flex-col">
+                    <div class="relative h-40 md:h-48 rounded-2xl overflow-hidden mb-5">
+                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sate Ayam" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 bg-orange-500 text-white text-[9px] font-bold px-2.5 py-1 rounded-full uppercase tracking-tighter">BEST SELLER</div>
+                    </div>
+                    <div class="px-1 flex-grow">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg md:text-xl font-bold text-gray-900">Sate Ayam Lontong</h3>
+                            <span class="text-base md:text-lg font-bold text-brand-600">42k</span>
+                        </div>
+                        <p class="text-gray-500 text-xs md:text-sm leading-relaxed mb-4">Daging ayam pilihan dibakar dengan bumbu kacang khas yang meresap sempurna.</p>
+                    </div>
+                    <div class="px-1 pb-1">
+                        <a href="https://wa.me/6282190339958" target="_blank" class="w-full flex items-center justify-center gap-2 bg-gray-50 hover:bg-brand-600 hover:text-white py-2.5 rounded-xl text-gray-600 font-bold transition-all text-xs">
+                            Pesan via WA
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Kangkung List -->
+                <div class="bg-brand-600 rounded-3xl p-6 md:p-8 text-white flex flex-col justify-between shadow-xl shadow-brand-500/20">
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-6">Seri Kangkung Cah</h3>
+                        <div class="space-y-3.5">
+                            <div class="flex justify-between items-center border-b border-white/20 pb-2">
+                                <span class="text-sm">Kangkung Cah Polos</span>
+                                <span class="font-bold">12k</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-white/20 pb-2">
+                                <span class="text-sm">Kangkung Cah Udang</span>
+                                <span class="font-bold">18k</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-white/20 pb-2">
+                                <span class="text-sm">Kangkung Cah Cumi</span>
+                                <span class="font-bold">18k</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-white/20 pb-2">
+                                <span class="text-sm">Kangkung Cah Ayam</span>
+                                <span class="font-bold">16k</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm">Kangkung Cah Sapi</span>
+                                <span class="font-bold">32k</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-5 border-t border-white/10">
+                        <p class="text-[10px] text-brand-100 italic">Sayur Asem Segar hanya 21k</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: NASI -->
+        <section id="nasi" class="scroll-mt-32 md:scroll-mt-40">
+            <div class="mb-8 md:mb-10 text-center md:text-left">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 border-l-4 border-brand-600 pl-4">Nasi & Pelengkap</h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Nasi Items -->
+                <div class="menu-card bg-white rounded-2xl overflow-hidden shadow border border-gray-100">
+                    <div class="h-32 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1541518763669-27fef04b14ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Nasi Bakar" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/40"></div>
+                        <div class="absolute bottom-3 left-4 text-white">
+                            <h3 class="font-bold text-sm md:text-base uppercase">Nasi Bakar</h3>
+                            <span class="text-xs font-bold text-brand-400">Rp 20.000</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-card bg-white rounded-2xl overflow-hidden shadow border border-gray-100">
+                    <div class="h-32 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1588675646184-f5502182578a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Nasi Kuning" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/40"></div>
+                        <div class="absolute bottom-3 left-4 text-white">
+                            <h3 class="font-bold text-sm md:text-base uppercase">Nasi Kuning</h3>
+                            <span class="text-xs font-bold text-brand-400">Rp 12.000</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-card bg-white rounded-2xl overflow-hidden shadow border border-gray-100">
+                    <div class="h-32 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1621295980646-6084042217f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Nasi Teri" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/40"></div>
+                        <div class="absolute bottom-3 left-4 text-white">
+                            <h3 class="font-bold text-sm md:text-base uppercase">Nasi Teri</h3>
+                            <span class="text-xs font-bold text-brand-400">Rp 20.000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Side Dish Table -->
+            <div class="mt-8 md:mt-12 glass rounded-3xl p-6 md:p-10 border border-white/50 shadow-xl">
+                <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-6 border-b border-gray-100 pb-3">Menu Pelengkap</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-3">
+                    <div class="flex justify-between items-center py-2 border-b border-gray-50 md:border-none">
+                        <span class="text-sm text-gray-700">Nasi Uduk</span>
+                        <span class="font-bold text-brand-600">12.7k</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2 border-b border-gray-50 md:border-none">
+                        <span class="text-sm text-gray-700">Ati Ampela</span>
+                        <span class="font-bold text-brand-600">13.6k</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2 border-b border-gray-50 md:border-none">
+                        <span class="text-sm text-gray-700">Tahu Tempe Goreng</span>
+                        <span class="font-bold text-brand-600">18.1k</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2 border-b border-gray-50 md:border-none">
+                        <span class="text-sm text-gray-700">Telur (Mata Sapi/Dadar)</span>
+                        <span class="font-bold text-brand-600">10k</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2 border-b border-gray-50 md:border-none">
+                        <span class="text-sm text-gray-900 font-bold">Nasi Telur</span>
+                        <span class="font-bold text-brand-600">12.7k</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2">
+                        <span class="text-sm text-gray-700">Nasi Putih / Lontong</span>
+                        <span class="font-bold text-brand-600">8k</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: MINUMAN -->
+        <section id="minuman" class="scroll-mt-32 md:scroll-mt-40">
+            <div class="text-center mb-10 md:mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900">Aneka Minuman Segar</h2>
+                <div class="w-12 h-1 bg-brand-600 mx-auto mt-2 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+                <!-- Juice Section -->
+                <div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                        <span class="w-2 h-6 bg-brand-500 rounded-full"></span>
+                        Fresh Juice Fruits
+                    </h3>
+                    <div class="space-y-3.5">
+                        <div class="flex items-center gap-4 p-3.5 rounded-2xl bg-white shadow-sm border border-gray-100">
+                            <div class="w-12 h-12 rounded-xl bg-orange-50 flex items-center justify-center text-xl text-orange-500">🍊</div>
+                            <div class="flex-grow">
+                                <h4 class="font-bold text-sm text-gray-900">Juice Wortel Jeruk</h4>
+                                <span class="text-gray-400 text-[10px]">Penuh Vitamin C</span>
+                            </div>
+                            <span class="font-bold text-brand-600 text-base">23k</span>
+                        </div>
+                        <div class="flex items-center gap-4 p-3.5 rounded-2xl bg-white shadow-sm border border-gray-100">
+                            <div class="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center text-xl text-red-500">🍉</div>
+                            <div class="flex-grow">
+                                <h4 class="font-bold text-sm text-gray-900">Juice Semangka</h4>
+                                <span class="text-gray-400 text-[10px]">Segar & Alami</span>
+                            </div>
+                            <span class="font-bold text-brand-600 text-base">22k</span>
+                        </div>
+                        <div class="flex items-center gap-4 p-3.5 rounded-2xl bg-white shadow-sm border border-gray-100">
+                            <div class="w-12 h-12 rounded-xl bg-green-50 flex items-center justify-center text-xl text-green-500">🍏</div>
+                            <div class="flex-grow">
+                                <h4 class="font-bold text-sm text-gray-900">Juice Apel / Buah Naga</h4>
+                                <span class="text-gray-400 text-[10px]">Kaya Serat</span>
+                            </div>
+                            <span class="font-bold text-brand-600 text-base">24k</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tea & Others Section -->
+                <div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                        <span class="w-2 h-6 bg-gray-800 rounded-full"></span>
+                        Tea, Coffee & Others
+                    </h3>
+                    <div class="bg-gray-900 text-white rounded-3xl p-6 md:p-8 shadow-xl">
+                        <div class="space-y-5">
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm font-medium">Teh Manis / Tawar</span>
+                                <span class="font-bold text-lg text-brand-500">8k</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm font-medium">Es Lime Squash</span>
+                                <span class="font-bold text-lg text-brand-500">25k</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm font-medium">Es Blue Month</span>
+                                <span class="font-bold text-lg text-brand-500">22k</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm font-medium">Wedang Jahe / Kopi</span>
+                                <span class="font-bold text-lg text-brand-500">22k</span>
+                            </div>
+                        </div>
+                        <div class="mt-8 py-3 px-4 rounded-xl bg-white/5 border border-white/10 text-center">
+                            <span class="text-gray-400 text-[10px] italic">Air Mineral (Biasa/Dingin) — 11.8k</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Order Button Mobile -->
+    <div id="mobile-cta" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 md:hidden w-full px-6 transition-all duration-300">
+        <a href="https://wa.me/6282190339958" target="_blank" class="flex items-center justify-center gap-3 bg-brand-600 text-white py-3.5 rounded-full font-bold shadow-2xl border border-white/20 active:scale-95 transition-all w-full text-sm uppercase tracking-wide">
+            Pesan via WhatsApp
+        </a>
+    </div>
+
+    <!-- Final CTA -->
+    <section class="py-16 md:py-24 bg-gray-100 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 text-center px-6">
+            <h2 class="text-xl md:text-2xl font-bold mb-6">Sudah Siap Memanjakan Lidah?</h2>
+            <div class="flex flex-col sm:flex-row justify-center gap-3">
+                <a href="https://wa.me/6282190339958" target="_blank" class="bg-brand-600 hover:bg-brand-700 text-white px-8 py-3 rounded-full font-bold text-sm shadow-md transition-all">
+                    Order Delivery
+                </a>
+                <a href="index.html#lokasi" class="bg-white hover:bg-gray-50 text-gray-800 border border-gray-200 px-8 py-3 rounded-full font-bold text-sm shadow-sm transition-all">
+                    Lihat Lokasi
+                </a>
+            </div>
+            <p class="mt-8 text-gray-400 text-[10px]">* Harga dapat berubah sewaktu-waktu</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-gray-900 text-white py-10">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="flex items-center justify-center gap-2 mb-4">
+                <img src="assets/img/logo.jpg" alt="Logo" class="h-8 w-8 rounded-full">
+                <span class="font-bold text-sm uppercase tracking-widest">Cabe Kampung Kita</span>
+            </div>
+            <p class="text-gray-500 text-[10px]">&copy; <span id="year"></span> Resto Cabe Kampung Kita. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        function scrollToCategory(id) {
+            const element = document.getElementById(id);
+            const headerOffset = window.innerWidth < 768 ? 130 : 150;
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth"
+            });
+        }
+
+        const sections = document.querySelectorAll('section[id]');
+        const navTabs = document.querySelectorAll('.category-tab');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 180) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navTabs.forEach(tab => {
+                tab.classList.remove('active', 'bg-brand-600', 'text-white');
+                tab.classList.add('text-gray-600', 'bg-white');
+                if (tab.getAttribute('onclick').includes(current)) {
+                    tab.classList.add('active', 'bg-brand-600', 'text-white');
+                    tab.classList.remove('text-gray-600', 'bg-white');
+                }
+            });
+        });
+
+        // Hide Mobile CTA when footer is in view
+        const mobileCta = document.getElementById('mobile-cta');
+        const footer = document.getElementById('footer');
+
+        if (mobileCta && footer) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        mobileCta.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+                    } else {
+                        mobileCta.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            observer.observe(footer);
+        }
+    </script>
+</body>
+</html>
